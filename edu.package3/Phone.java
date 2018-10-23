@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 package edu.project3;
-=======
-package Project_3;
->>>>>>> b459d1800c9f02b7237d970a0154732c48c43d7f
 
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -129,9 +125,6 @@ public class Phone {
 						catch(IndexOutOfBoundsException e) {
 							System.out.println("Make sure you entered a number between 1 and 5 and that there are at least as many favorites you are trying to add.");
 						}
-						catch(NumberFormatException e) {
-							System.out.println("There needs to be a number input here.");
-						}
 					}
 					//Displays contact
 					else if (favNav.equals("4")) {
@@ -142,9 +135,6 @@ public class Phone {
 						}
 						catch(IndexOutOfBoundsException e) {
 							System.out.println("Make sure you entered a number between 1 and 5 and that there are at least as many favorites you are trying to add.");
-						}
-						catch(NumberFormatException e) {
-							System.out.println("There needs to be a number input here.");
 						}
 					}
 					//Exits to main menu.
