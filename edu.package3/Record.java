@@ -12,7 +12,7 @@ public class Record {
 	private String id;
 	private String date;
 	private String IO;
-	private ArrayList<Record> multiRecord = new ArrayList<Record>();
+	public ArrayList<Record> multiRecord = new ArrayList<Record>();
 	/**
 	 * Constructor that sets all instance variables
 	 * @param id - Name or number
@@ -36,7 +36,7 @@ public class Record {
 	 * @return - formated string
 	 */
 	public String toString() {
-		return String.format("%s %n%-20s%s", id,date,IO);
+		return String.format("%s %n%-40s%s", id,date,IO);
 	}
 	/**
 	 * Consolidates a record to a multi record
@@ -44,6 +44,14 @@ public class Record {
 	 */
 	public void consolidate(Record r) {
 		multiRecord.add(r);
+	}
+	/**
+	 * Consolidates record into multirecord at index a
+	 * @param a - index
+	 * @param r - record to be consolidated
+	 */
+	public void consolidate(int a,Record r) {
+		multiRecord.add(a,r);
 	}
 	/**
 	 * returns the size of the multirecord.

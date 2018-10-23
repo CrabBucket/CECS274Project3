@@ -31,7 +31,7 @@ public class Log {
 			//Second for loop goes through all the remaining entries in the log, if you are at entry 5/10 it will go through 6,7,8,9,10
 			for(int c=i+1;c<log.size();c++) {
 				//If any record past the current record has the same ID we consolidate it into the first record then remove the addtional entries from the log
-				if(log.get(i).getId()==log.get(c).getId()) {
+				if(log.get(i).getId().equals(log.get(c).getId())) {
 					log.get(i).consolidate(log.get(c));
 					log.remove(c);
 					//We need to go back one since when you remove an entry from an ArrayList we do weird things to the indices
@@ -44,12 +44,27 @@ public class Log {
 				//If the record is not a duplicate we just use the records toString
 				System.out.println(log.get(i).toString());
 			}else {
-				//If the record is a duplicate we want to print ID (# of records).
+				//If the record is a duplicate we want to print ID (# of records).  We also need to consolidate the log into itself.
+				log.get(i).consolidate(0,log.get(i));
 				System.out.printf("%-10s(%d)%n",log.get(i).getId(),log.get(i).size());
 			}
 			
 		}
+		System.out.print("\n\n\n\n");
 		return dupe;
+	}
+	public void showDupe() {
+		System.out.println();
+		for(Record c:log) {
+			if(c.size()>0) {
+				
+				for(Record x:c.multiRecord) {
+					System.out.println(x.toString());
+					System.out.println();
+				}
+			}
+		}
+		System.out.println();
 	}
 	
 }
