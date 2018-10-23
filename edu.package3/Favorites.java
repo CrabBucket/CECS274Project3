@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
  *
  */
 public class Favorites {
-	private ArrayList<Contact> fav = new ArrayList<Contact>();
+	public ArrayList<Contact> fav = new ArrayList<Contact>();
 	private ArrayList<FavoriteContactFrame> favC = new ArrayList<FavoriteContactFrame>();
 	/**
 	 * Adds a contact and keeps the list at a max of 6

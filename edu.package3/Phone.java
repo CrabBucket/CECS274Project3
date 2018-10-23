@@ -1,5 +1,6 @@
 package edu.project3;
 
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,12 +8,13 @@ public class Phone {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
+		Log log = new Log();
 		Favorites favorites = new Favorites();
 		PhoneBook phone = new PhoneBook();
 		System.out.println("Would you like to access your phone book? 'Yes' or 'No' ");
 		
 			while(true) {
-				System.out.println("Please enter the number of what you want to access:\n1. Phone book\n2. Favorites\n3. Calls\n4. Call History\n5: Exit phone");
+				System.out.println("Please enter the number(1-5) of what you want to access:\n1. Phone book\n2. Favorites\n3. Calls\n4. Call History\n5: Exit phone");
 				String nextInput = scan.nextLine();
 				if (nextInput.equals("1")) {
 					while(true) {
@@ -119,13 +121,72 @@ public class Phone {
 					}
 				}
 				else if (nextInput.equals("3")) {
-					
+					while(true){
+						System.out.println("Enter a phone number, a name or a Favorite 1-5, to make or recieve a call. Type \"menu\" to go back to menu");
+						String num = scan.nextLine();
+						if(num.length()==1) {
+							System.out.println("Is the call comming in or out? Type \"in\" for in and \"out\", for out.");
+							String IO = scan.nextLine();
+							if(IO.equals("in")) {
+								IO="Incoming";
+							}else {
+								IO="Outgoing";
+							}
+							Date date = new Date();
+							log.add(new Record(favorites.fav.get(Integer.valueOf(num)).getName(),date.toString(),IO));
+						}else if(num.length()==10&&Character.isDigit(num.charAt(0))) {
+							System.out.println("Is the call comming in or out? Type \"in\" for in and \"out\", for out.");
+							
+							String IO = scan.nextLine();
+							if(IO.equals("in")) {
+								IO="Incoming";
+							}else {
+								IO="Outgoing";
+							}
+							Date date = new Date();
+							StringBuilder pNum = new StringBuilder(num);
+							pNum.insert(0,"(");
+							pNum.insert(4,")");
+							pNum.insert(8,"-");
+							log.add(new Record(pNum.toString(),date.toString(),IO));
+						}else if(!Character.isDigit(num.charAt(0))) {
+							if(num.equals("menu")) {
+								break;
+							}
+							while(!phone.inBook(num)) {
+								System.out.println("The name is not in the Phonebook, enter a name that exists in the Phone book or enter menu to go back to the menu.");
+								num=scan.nextLine();
+								if(num.equals("menu")) {
+									break;
+								}
+							}
+							if(num.equals("menu")) {
+								break;
+							}
+							System.out.println("Is the call comming in or out? Type \"in\" for in and \"out\", for out.");
+							
+							String IO = scan.nextLine();
+							if(IO.equals("in")) {
+								IO="Incoming";
+							}else {
+								IO="Outgoing";
+							}
+							Date date = new Date();
+							log.add(new Record(favorites.fav.get(Integer.valueOf(num)).getName(),date.toString(),IO));
+						}
+					}
 				}
 				else if (nextInput.equals("4")) {
-					
+					if(log.display()) {
+						System.out.println("Do you wish to see more information?(Y/N)");
+						String temp = scan.nextLine();
+						if(temp.toLowerCase().equals("y")) {
+							
+						}
+					}
 				}
 				else if (nextInput.equals("5")) {
-					
+					break;
 				}
 				
 				else {

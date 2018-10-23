@@ -21,6 +21,19 @@ public class PhoneBook {
 		
 	}
 	/**
+	 * Checks to see if the name is in the phonebook
+	 * @param name - name to be checked
+	 * @return - returns true if it finds the name in the phonebook.
+	 */
+	public boolean inBook(String name) {
+		for(Contact c:book) {
+			if(c.getName().equals(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	/**
 	 * Removes contact with the name, name.
 	 * @throws InputMismatchException - Throws exception when name is not found in the Phonebook
 	 */
