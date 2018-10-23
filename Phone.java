@@ -116,11 +116,17 @@ public class Phone {
 					//Changes preference of favorite.
 					else if (favNav.equals("3")) {
 						try {
+							for(Contact c:favorites.fav) {
+								System.out.println(c.getName());
+							}
 							System.out.println("Enter the name of the Favorite you wish to change");
 							String name = scan.nextLine();
 							System.out.println("Enter the new Favorite number you wish to change the contact to.");
 							int index = Integer.valueOf(scan.nextLine());
 							favorites.swap(name, index);
+							for(Contact c:favorites.fav) {
+								System.out.println(c.getName());
+							}
 						}
 						catch(IndexOutOfBoundsException e) {
 							System.out.println("Make sure you entered a number between 1 and 5 and that there are at least as many favorites you are trying to add.");
