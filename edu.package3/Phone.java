@@ -125,6 +125,9 @@ public class Phone {
 						catch(IndexOutOfBoundsException e) {
 							System.out.println("Make sure you entered a number between 1 and 5 and that there are at least as many favorites you are trying to add.");
 						}
+						catch(NumberFormatException e) {
+                            System.out.println("There needs to be a number input here.");
+                        }
 					}
 					//Displays contact
 					else if (favNav.equals("4")) {
@@ -136,6 +139,9 @@ public class Phone {
 						catch(IndexOutOfBoundsException e) {
 							System.out.println("Make sure you entered a number between 1 and 5 and that there are at least as many favorites you are trying to add.");
 						}
+						catch(NumberFormatException e) {
+                            System.out.println("There needs to be a number input here.");
+                        }
 					}
 					//Exits to main menu.
 					else if (favNav.equals("5")) {
