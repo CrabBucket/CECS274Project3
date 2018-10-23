@@ -181,7 +181,7 @@ public class Phone {
 						System.out.println("Do you wish to see more information?(Y/N)");
 						String temp = scan.nextLine();
 						if(temp.toLowerCase().equals("y")) {
-							
+							log.showDupe();
 						}
 					}
 				}
