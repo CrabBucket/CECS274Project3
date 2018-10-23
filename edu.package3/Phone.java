@@ -93,10 +93,26 @@ public class Phone {
 						}
 					}
 					else if (nextInput.equals("3")) {
-						
+						try {
+							System.out.println("Enter the name of the Favorite you wish to change");
+							String name = scan.nextLine();
+							System.out.println("Enter the new Favorite number you wish to change the contact to.");
+							int index = Integer.valueOf(scan.nextLine());
+							favorites.swap(name, index);
+						}
+						catch(IndexOutOfBoundsException e) {
+							System.out.println("Make sure you entered a number between 1 and 5 and that there are at least as many favorites you are trying to add.");
+						}
 					}
 					else if (nextInput.equals("4")) {
-						
+						try {
+							System.out.println("Enter the Number of the contact you wish to display.");
+							int index = Integer.valueOf(scan.nextLine());
+							favorites.display(index);
+						}
+						catch(IndexOutOfBoundsException e) {
+							System.out.println("Make sure you entered a number between 1 and 5 and that there are at least as many favorites you are trying to add.");
+						}
 					}
 					else if (nextInput.equals("5")) {
 						break;
